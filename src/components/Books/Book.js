@@ -1,21 +1,32 @@
 import React from 'react';
+import noImg from './no-book.jpg';
 
 const Book = ({ book }) => {
+  const { volumeInfo, saleInfo } = book;
   return (
     <li>
-      <h2>{book.volumeInfo.title}</h2>
+      <h2>{volumeInfo.title}</h2>
       <img
-        src={book.volumeInfo.imageLinks.thumbnail}
-        alt={book.volumeInfo.title}
+        src={
+          volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail
+            ? volumeInfo.imageLinks.thumbnail
+            : noImg
+        }
+        alt={volumeInfo.title}
       />
-      <p>Author: {book.volumeInfo.authors[0]}</p>
+      <p>
+        Author:{' '}
+        {volumeInfo.authors && volumeInfo.authors.length
+          ? volumeInfo.authors[0]
+          : 'No Author'}
+      </p>
       <p>
         Price:{' '}
-        {book.saleInfo.saleability === 'FOR_SALE'
-          ? `$${book.saleInfo.retailPrice.amount}`
+        {saleInfo.saleability === 'FOR_SALE'
+          ? `$${saleInfo.retailPrice.amount}`
           : 'Not for Sale'}
       </p>
-      <p>{book.volumeInfo.description}</p>
+      <p>{volumeInfo.description}</p>
     </li>
   );
 };
