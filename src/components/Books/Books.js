@@ -3,7 +3,10 @@ import Book from './Book';
 
 const Books = ({ books }) => {
   const renderBooks = () => {
-    return books.items.map((book) => <Book book={book}></Book>);
+    if (!books || books.totalItems === 0) {
+      return <p>No Books Found :(</p>;
+    }
+    return books.items.map((book) => <Book key={book.id} book={book}></Book>);
   };
 
   return (

@@ -26,7 +26,11 @@ const Book = ({ book }) => {
           ? `$${saleInfo.retailPrice.amount}`
           : 'Not for Sale'}
       </p>
-      <p>{volumeInfo.description}</p>
+      <p>
+        {volumeInfo.description
+          ? volumeInfo.description
+          : 'No description available'}
+      </p>
     </li>
   );
 };
