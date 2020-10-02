@@ -11,8 +11,12 @@ const Books = ({ books }) => {
 
   return (
     <section>
-      <h1>Books</h1>
-      <ul>{books ? renderBooks() : null}</ul>
+      {books ? (
+        <>
+          <h2>Results</h2>
+          <ul>{renderBooks()}</ul>
+        </>
+      ) : null}
     </section>
   );
 };

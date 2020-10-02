@@ -5,7 +5,7 @@ const Book = ({ book }) => {
   const { volumeInfo, saleInfo } = book;
   return (
     <li>
-      <h2>{volumeInfo.title}</h2>
+      <h3>{volumeInfo.title}</h3>
       <img
         src={
           volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail
