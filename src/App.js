@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import GlobalStyles from './globalStyles';
 import Books from './components/Books/Books';
 import Search from './components/Search/Search';
@@ -9,10 +9,6 @@ const App = () => {
   const [books, setBooks] = useState(null);
   const [printType, setPrintType] = useState('all');
   const [bookType, setBookType] = useState('');
-
-  useEffect(() => {
-    getBooks('harry potter');
-  }, []);
 
   const getBooks = async (searchTerm) => {
     try {
