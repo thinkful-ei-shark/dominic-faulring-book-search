@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import GlobalStyles from './globalStyles';
 import Books from './components/Books/Books';
 import Search from './components/Search/Search';
 import Header from './components/Header/Header';
@@ -9,15 +10,22 @@ const App = () => {
   const [printType, setPrintType] = useState('all');
   const [bookType, setBookType] = useState('');
 
-  const getBooks = (searchTerm) => {
-    fetch(
-      `${API_URL}${searchTerm}&printType=${printType}${
-        bookType !== '' ? `&filter=${bookType}` : ''
-      }`
-    )
-      .then((res) => res.json())
-      .then((data) => setBooks(data))
-      .catch((err) => console.log(err));
+  useEffect(() => {
+    getBooks('harry potter');
+  }, []);
+
+  const getBooks = async (searchTerm) => {
+    try {
+      const res = await fetch(
+        `${API_URL}${searchTerm}&printType=${printType}${
+          bookType !== '' ? `&filter=${bookType}` : ''
+        }`
+      );
+      const data = await res.json();
+      return setBooks(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const changePrintType = (type) => {
@@ -29,15 +37,18 @@ const App = () => {
   };
 
   return (
-    <main>
+    <>
+      <GlobalStyles />
       <Header></Header>
-      <Search
-        getBooks={getBooks}
-        changePrintType={changePrintType}
-        changeBookType={changeBookType}
-      ></Search>
-      <Books books={books}></Books>
-    </main>
+      <main>
+        <Search
+          getBooks={getBooks}
+          changePrintType={changePrintType}
+          changeBookType={changeBookType}
+        ></Search>
+        <Books books={books}></Books>
+      </main>
+    </>
   );
 };
 

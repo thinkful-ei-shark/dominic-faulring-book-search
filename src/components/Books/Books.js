@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Book from './Book';
 
 const Books = ({ books }) => {
@@ -14,11 +15,17 @@ const Books = ({ books }) => {
       {books ? (
         <>
           <h2>Results</h2>
-          <ul>{renderBooks()}</ul>
+          <SearchResults>{renderBooks()}</SearchResults>
         </>
       ) : null}
     </section>
   );
 };
+
+const SearchResults = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0 1.6rem;
+`;
 
 export default Books;

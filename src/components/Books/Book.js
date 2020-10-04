@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import noImg from './no-book.jpg';
 
 const Book = ({ book }) => {
   const { volumeInfo, saleInfo } = book;
   return (
-    <li>
+    <BookResult>
       <h3>{volumeInfo.title}</h3>
       <img
         src={
@@ -31,8 +32,10 @@ const Book = ({ book }) => {
           ? volumeInfo.description
           : 'No description available'}
       </p>
-    </li>
+    </BookResult>
   );
 };
+
+const BookResult = styled.div``;
 
 export default Book;
