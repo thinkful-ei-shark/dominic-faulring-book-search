@@ -14,7 +14,6 @@ const Books = ({ books }) => {
     <section>
       {books ? (
         <>
-          <h2>Results</h2>
           <SearchResults>{renderBooks()}</SearchResults>
         </>
       ) : null}
@@ -26,6 +25,8 @@ const SearchResults = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0 1.6rem;
+  width: calc(100% - 9.6rem);
+  margin: 0 auto;
 `;
 
 export default Books;

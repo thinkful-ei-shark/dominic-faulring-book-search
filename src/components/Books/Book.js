@@ -29,7 +29,7 @@ const Book = ({ book }) => {
       </p>
       <p>
         {volumeInfo.description
-          ? volumeInfo.description
+          ? volumeInfo.description.substring(0, 160) + '...'
           : 'No description available'}
       </p>
     </BookResult>
