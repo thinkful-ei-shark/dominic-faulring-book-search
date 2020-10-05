@@ -24,13 +24,9 @@ const App = () => {
     }
   };
 
-  const changePrintType = (type) => {
-    return setPrintType(type);
-  };
+  const changePrintType = (type) => setPrintType(type);
 
-  const changeBookType = (type) => {
-    return setBookType(type);
-  };
+  const changeBookType = (type) => setBookType(type);
 
   return (
     <>

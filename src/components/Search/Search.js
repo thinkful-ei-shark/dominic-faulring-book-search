@@ -20,6 +20,7 @@ const Search = ({ getBooks, changePrintType, changeBookType }) => {
         <label htmlFor='book-title'>Book Title</label>
         <input
           id='book-title'
+          type='text'
           onChange={(e) => setQuery(e.target.value)}
           value={query}
           required
